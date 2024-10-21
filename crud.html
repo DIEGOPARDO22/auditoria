@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Historias Clínicas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Registro de Historias Clínicas</h1>
+        <div class="content">
+            <form id="historia-form" class="form">
+                <h2>Agregar Historia Clínica</h2>
+                <input type="text" id="nombre" placeholder="Nombre del Paciente" required>
+                <input type="text" id="dni" placeholder="DNI" required>
+                <input type="date" id="fecha_nacimiento" required>
+                <input type="text" id="diagnostico" placeholder="Diagnóstico" required>
+                <input type="text" id="tratamiento" placeholder="Tratamiento" required>
+                <input type="text" id="medico" placeholder="Médico" required>
+                <input type="date" id="fecha_consulta" required>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn">Registrar Historia Clínica</button>
+                    <button id="sync-button" type="button" class="btn sync-btn small-btn">🗲 Sincronizar</button>
+                    <span id="sync-status" class="sync-status"></span>
+                </div>
+            </form>
+
+            <div class="loading" id="loading">Cargando datos...</div>
+
+            <div class="table-container">
+                <h2>Historias Clínicas Registradas</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>DNI</th>
+                            <th>Fecha de Nacimiento</th>
+                            <th>Diagnóstico</th>
+                            <th>Tratamiento</th>
+                            <th>Médico</th>
+                            <th>Fecha de Consulta</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="historia-list">
+                        <!-- Las historias clínicas se cargarán aquí -->
+                    </tbody>
+                </table>
+            </div>
+
+            <table class="mobile-table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Diagnóstico</th>
+                        <th>Tratamiento</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="mobile-historia-list">
+                    <!-- Las historias clínicas se cargarán aquí para dispositivos móviles -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Modal para editar historia clínica -->
+        <div id="edit-modal" style="display:none;">
+            <div>
+                <span id="close-modal">&times;</span>
+                <h2>Editar Historia Clínica</h2>
+                <form id="edit-form">
+                    <input type="hidden" id="id" value="" />
+                    <label for="edit-nombre">Nombre del Paciente:</label>
+                    <input type="text" id="edit-nombre" required />
+                    <label for="edit-dni">DNI:</label>
+                    <input type="text" id="edit-dni" required />
+                    <label for="edit-fecha-nacimiento">Fecha de Nacimiento:</label>
+                    <input type="date" id="edit-fecha-nacimiento" required />
+                    <label for="edit-diagnostico">Diagnóstico:</label>
+                    <input type="text" id="edit-diagnostico" required />
+                    <label for="edit-tratamiento">Tratamiento:</label>
+                    <input type="text" id="edit-tratamiento" required />
+                    <label for="edit-medico">Médico:</label>
+                    <input type="text" id="edit-medico" required />
+                    <label for="edit-fecha-consulta">Fecha de Consulta:</label>
+                    <input type="date" id="edit-fecha-consulta" required />
+                    <button type="submit">Guardar Cambios</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <script type="module" src="app.js"></script>
+</body>
+
+</html>
